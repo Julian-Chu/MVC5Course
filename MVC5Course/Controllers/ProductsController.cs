@@ -16,7 +16,7 @@ namespace MVC5Course.Controllers
 
         // GET: Products
         public ActionResult Index(string sortBy, string keyword)
-        {
+        { 
 
             var data = db.Product.AsQueryable();
 
