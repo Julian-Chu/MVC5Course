@@ -17,15 +17,19 @@
         <p>keyword:@ViewBag.keyword</p>
     </form>
 </p>
+@using PagedList
+@using PagedList.Mvc
+
+@Html.PagedListPager(Model as IPagedList, p => Url.Action("Index", new { pageNo = p, keyword = ViewBag.keyword }));
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
-            <a href="@Url.Action("Index", "Products", new { sortBy = "+Price" , keyword=ViewBag.keyword})">↑</a>
+            <a href="@Url.Action("Index", "Products", new { sortBy = "+Price", keyword = ViewBag.keyword, pageNo = ViewBag.pageNo })">↑</a>
             @Html.DisplayNameFor(model => model.Price)
-            <a href="@Url.Action("Index", "Products", new { sortBy = "-Price" , keyword=ViewBag.keyword})">↓</a>
+            <a href="@Url.Action("Index", "Products", new { sortBy = "-Price" , keyword= ViewBag.keyword , pageNo = ViewBag.pageNo})">↓</a>
 
         </th>
         <th>
