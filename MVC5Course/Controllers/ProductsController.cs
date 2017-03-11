@@ -29,6 +29,7 @@ namespace MVC5Course.Controllers
             else
                 data = data.OrderByDescending(p => p.Price);
 
+            ViewBag.keyword = keyword;
             return View(data.Take(10).ToList());
         }
 

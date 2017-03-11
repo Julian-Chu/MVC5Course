@@ -22,9 +22,9 @@
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
-            <a href="@Url.Action("Index", "Products", new { sortBy = "+Price" })">↑</a>
+            <a href="@Url.Action("Index", "Products", new { sortBy = "+Price" , keyword=ViewBag.keyword})">↑</a>
             @Html.DisplayNameFor(model => model.Price)
-            <a href="@Url.Action("Index", "Products", new { sortBy = "-Price" })">↓</a>
+            <a href="@Url.Action("Index", "Products", new { sortBy = "-Price" , keyword=ViewBag.keyword})">↓</a>
 
         </th>
         <th>
