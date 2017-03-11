@@ -11,9 +11,10 @@
 </p>
 <p>
     <form>
-        <input type="search" name="keyword" value="" />
+        @*<input type="search" name="keyword" value="" />*@
+        @Html.TextBox("keyword");
         <input type="submit" value="搜尋" />
-
+        <p>keyword:@ViewBag.keyword</p>
     </form>
 </p>
 <table class="table">
