@@ -15,9 +15,16 @@ namespace MVC5Course.Controllers
         private FabricsEntities db = new FabricsEntities();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string sortBy)
         {
-            return View(db.Product.OrderByDescending(p=>p.ProductId).Take(10).ToList());
+            var database = db.Product.AsQueryable();
+
+            if (sortBy == "+Price")
+                database = database.OrderBy(p => p.Price);
+            else
+                database = database.OrderByDescending(p => p.Price);
+
+            return View(database.Take(10).ToList());
         }
 
         // GET: Products/Details/5

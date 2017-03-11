@@ -15,7 +15,10 @@
             @Html.DisplayNameFor(model => model.ProductName)
         </th>
         <th>
+            <a href="@Url.Action("Index", "Products", new { sortBy = "+Price" })">↑</a>
             @Html.DisplayNameFor(model => model.Price)
+            <a href="@Url.Action("Index", "Products", new { sortBy = "-Price" })">↓</a>
+
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Active)
