@@ -19,7 +19,7 @@ namespace MVC5Course.Models
         [StringLength(80, ErrorMessage="欄位長度不得大於 80 個字元")]
         [Required(ErrorMessage = "請輸入商品名稱({0})")]
         [DisplayName("商品名稱")]
-        [商品名稱不能有Will字串Attribute]
+        [商品名稱不能有Will字串Attribute(ErrorMessage ="商品名稱不能有Will字串2")]
         public string ProductName { get; set; }
         [Required]
         [Range(10, 9999999999, ErrorMessage = "({0}) 金額錯誤")]

@@ -24,7 +24,10 @@ namespace MVC5Course.Models
         {
             List<ValidationResult> results = new List<ValidationResult>();
             if (!this.LoginCheck())
+            {
                 yield return new ValidationResult("登入失敗", new string[] { "Username" });
+                yield break;
+            }
 
 
             yield return ValidationResult.Success;
