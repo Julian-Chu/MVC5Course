@@ -13,8 +13,7 @@ namespace MVC5Course.Controllers
 {
     public class ProductsController : Controller
     {
-        //錯誤 Repo不包含資料庫連線管理, 用RepositoryHelper.GetProductRepository()取得repo
-        private ProductRepository repo = new ProductRepository();
+        private ProductRepository repo = RepositoryHelper.GetProductRepository();
         
         // GET: Products
         public ActionResult Index(string sortBy, string keyword , int pageNo = 1)
