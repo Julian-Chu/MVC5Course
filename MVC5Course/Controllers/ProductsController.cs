@@ -19,12 +19,17 @@ namespace MVC5Course.Controllers
         // GET: Products
         public ActionResult Index(string sortBy, string keyword , int pageNo = 1)
         {
+            DoSearchOnIndex(sortBy, keyword, pageNo);
+            return View();
+        }
 
+        private void DoSearchOnIndex(string sortBy, string keyword, int pageNo)
+        {
             var data = repoProduct.All().AsQueryable();
 
             if (!string.IsNullOrEmpty(keyword))
                 data = data.Where(p => p.ProductName.Contains(keyword));
-                    
+
 
             if (sortBy == "+Price")
                 data = data.OrderBy(p => p.Price);
@@ -37,16 +42,32 @@ namespace MVC5Course.Controllers
             //return View(data.ToPagedList(pageNo,5));
 
             //使用ViewData.Model 等同return View(data.ToPagedList(pageNo,5));
-            ViewData.Model = data.ToPagedList(pageNo, 5);  
-            return View();
+            ViewData.Model = data.ToPagedList(pageNo, 5);
         }
 
         [HttpPost]
-        public ActionResult Index(Product[] data)
+        public ActionResult Index(Product[] data, string sortBy, string keyword, int pageNo = 1)
         {
 
-            return Content(data[0].ProductName.ToString());
-            //return RedirectToAction("Index");
+            if (ModelState.IsValid)  // 模型驗證後 記得要加!
+            {
+                
+                foreach (var item in data)
+                {
+                    var prod = repoProduct.Find(item.ProductId);
+                    prod.ProductName = item.ProductName;
+                    prod.Price = item.Price;
+                    prod.Stock = item.Stock;
+                    prod.Active = item.Active;
+                }
+                repoProduct.UnitOfWork.Commit();
+                return RedirectToAction("Index");
+            }
+            DoSearchOnIndex(sortBy, keyword, pageNo);
+
+            return View();
+
+
         }
 
         // GET: Products/Details/5
