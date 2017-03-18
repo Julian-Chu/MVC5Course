@@ -193,6 +193,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MBController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
@@ -403,6 +404,7 @@
     <Content Include="Views\Shared\_Pager.cshtml" />
     <Content Include="Views\AR\Index.cshtml" />
     <Content Include="Views\AR\View3.cshtml" />
+    <Content Include="Views\MB\Form1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
