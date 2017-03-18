@@ -17,8 +17,5 @@ namespace MVC5Course.Controllers
             //base.HandleUnknownAction(actionName);  //回傳404
             this.Redirect("/").ExecuteResult(this.ControllerContext); 
         }
-
-
-
     }
 }

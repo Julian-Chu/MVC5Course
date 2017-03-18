@@ -6,10 +6,9 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    
-    public class TestController : BaseController
+    public class ARController : Controller
     {
-        // GET: Test
+        // GET: AR
         public ActionResult Index()
         {
             return View();
