@@ -41,6 +41,14 @@ namespace MVC5Course.Controllers
             return View();
         }
 
+        [HttpPost]
+        public ActionResult Index(Product[] data)
+        {
+
+            return Content(data[0].ProductName.ToString());
+            //return RedirectToAction("Index");
+        }
+
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {
