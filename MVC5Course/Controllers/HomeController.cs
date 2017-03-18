@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace MVC5Course.Controllers
 {
@@ -33,21 +34,38 @@ namespace MVC5Course.Controllers
             return View();
         }
 
-        public ActionResult Login()
+        public ActionResult Login(string ReturnUrl="")
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult Login(LoginVM login)
+        public ActionResult Login(LoginVM login, string ReturnUrl="")
         {
             
             if (ModelState.IsValid)
             {
-                return Content($"Username:{login.Username}, Passowrd:{login.Password}");
+                FormsAuthentication.RedirectFromLoginPage("Will", false);
+                if (ReturnUrl.StartsWith("/"))
+                    return Redirect(ReturnUrl);
+                else
+                {
+                    return RedirectToAction("Index");
+                    
+                }
+
+                //return Content($"Username:{login.Username}, Passowrd:{login.Password}");
+                //return RedirectToAction("Index");
+                
             }
             return View();
 
+        }
+
+        public ActionResult LogOff()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Login");
         }
     }
 }
