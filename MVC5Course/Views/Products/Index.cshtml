@@ -13,7 +13,7 @@
 <p>
     <form>
         @*<input type="search" name="keyword" value="" />*@
-        @Html.TextBox("keyword");
+        @Html.TextBox("keyword")
         <input type="submit" value="搜尋" />
         <p>keyword:@ViewBag.keyword</p>
     </form>
@@ -22,7 +22,7 @@
 @using PagedList.Mvc
 
 @Html.PagedListPager(Model as IPagedList, p => Url.Action("Index", new { pageNo = p, keyword = ViewBag.keyword }));*@
-@Html.Partial("_Pager", Model);
+@Html.Partial("_Pager", Model)
 <table class="table">
     <tr>
         <th>
