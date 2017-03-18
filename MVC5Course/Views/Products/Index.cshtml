@@ -17,10 +17,11 @@
         <p>keyword:@ViewBag.keyword</p>
     </form>
 </p>
-@using PagedList
+@*@using PagedList
 @using PagedList.Mvc
 
-@Html.PagedListPager(Model as IPagedList, p => Url.Action("Index", new { pageNo = p, keyword = ViewBag.keyword }));
+@Html.PagedListPager(Model as IPagedList, p => Url.Action("Index", new { pageNo = p, keyword = ViewBag.keyword }));*@
+@Html.Partial("_Pager", Model);
 <table class="table">
     <tr>
         <th>

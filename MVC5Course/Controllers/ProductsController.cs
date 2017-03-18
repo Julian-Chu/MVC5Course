@@ -33,7 +33,7 @@ namespace MVC5Course.Controllers
 
             ViewBag.keyword = keyword;
             ViewBag.pageNo = pageNo;
-            return View(data.ToPagedList(pageNo,10));
+            return View(data.ToPagedList(pageNo,5));
         }
 
         // GET: Products/Details/5
