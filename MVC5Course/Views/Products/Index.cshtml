@@ -55,7 +55,8 @@
             <tr>
                 <td>
                     @*@Html.DisplayFor(modelItem => item.ProductName)*@
-                    @Html.EditorFor(modelItem => data[i].ProductName)
+                    @*@Html.EditorFor(modelItem => data[i].ProductName)*@
+                    @Html.EditorFor(modelItem => data[i].ProductName, null, "data[" + i + "].ProductName")
                     @Html.ValidationMessageFor(modelItem => data[i].ProductName)
                 </td>
                 <td class="@(data[i].Price > 100 ? "text-danger" : "")">
