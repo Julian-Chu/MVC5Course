@@ -49,6 +49,7 @@
                 </a>
                 <a class="brand" href="index.html"><span>Metro</span></a>
 
+
                 <!-- start: Header Menu -->
                 <div class="nav-no-collapse header-nav">
                     <ul class="nav pull-right">
@@ -362,7 +363,23 @@
                     <p>You need to have <a href="http://en.wikipedia.org/wiki/JavaScript" target="_blank">JavaScript</a> enabled to use this site.</p>
                 </div>
             </noscript>
+            <ul class="breadcrumb">
+                <li>
+                    <i class="icon-home"></i>
+                    <a href="@Url.Action("Index","Home")">Home</a>
+                    <i class="icon-angle-right"></i>
+                </li>
+                @RenderSection("breadcrumb", true)
 
+                @if (!IsSectionDefined("breadcrumb"))
+                {
+                    <li><a href="#">!!!忘記輸入路徑名稱!!</a></li>
+                }
+                @*<li>
+                <i class="icon-edit"></i>
+                <a href="#">Forms</a>
+            </li>*@
+            </ul>
 
             @RenderBody();
 
