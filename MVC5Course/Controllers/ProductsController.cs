@@ -70,7 +70,7 @@ namespace MVC5Course.Controllers
 
 
         }
-
+        [AllowAnonymous]
         // GET: Products/Details/5
         public ActionResult Details(int? id)
         {

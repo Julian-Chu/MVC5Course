@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    [Authorize]
+    
     public abstract class BaseController : Controller
     {
         public ProductRepository repoProduct = RepositoryHelper.GetProductRepository();
