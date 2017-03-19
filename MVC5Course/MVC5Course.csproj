@@ -427,6 +427,8 @@
     <Content Include="Views\Shared\Error_ArgumentException.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
     <Content Include="Views\RT\RazorTest.cshtml" />
+    <Content Include="Views\Shared\_Layout_Metro.cshtml" />
+    <Content Include="Views\Home\_ViewStart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
