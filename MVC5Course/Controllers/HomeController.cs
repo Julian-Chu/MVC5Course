@@ -10,7 +10,8 @@ using System.Web.Security;
 namespace MVC5Course.Controllers
 {
     [HandleError(View ="Error_ArgumentException", ExceptionType =typeof(ArgumentException))]
-    public class HomeController : Controller
+    [AllowAnonymous]
+    public class HomeController : BaseController
     {
         public ActionResult Index()
         {
@@ -78,5 +79,6 @@ namespace MVC5Course.Controllers
             FormsAuthentication.SignOut();
             return RedirectToAction("Login");
         }
+
     }
 }
