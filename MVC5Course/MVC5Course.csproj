@@ -193,6 +193,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MBController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\RTController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -405,6 +406,7 @@
     <Content Include="Views\MB\Form1.cshtml" />
     <Content Include="Views\Shared\Error_ArgumentException.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
+    <Content Include="Views\RT\RazorTest.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
