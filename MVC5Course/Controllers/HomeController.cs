@@ -29,6 +29,7 @@ namespace MVC5Course.Controllers
             return View();
         }
 
+        [僅在本機開發測試用]
         [設定本控制器常用的ViewBag資料]
         public ActionResult Contact()
         {
