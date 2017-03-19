@@ -1,4 +1,5 @@
-﻿using MVC5Course.Models;
+﻿using MVC5Course.ActionFilters;
+using MVC5Course.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,7 @@ using System.Web.Security;
 
 namespace MVC5Course.Controllers
 {
+    [HandleError(View ="Error_ArgumentException", ExceptionType =typeof(ArgumentException))]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -15,20 +17,22 @@ namespace MVC5Course.Controllers
             return View();
         }
 
-        public ActionResult About(string ex = "")
+        [設定本控制器常用的ViewBag資料]
+        public ActionResult About(int ex)
         {
-            ViewBag.Message = "Your application description page.";
-            if(ex == "exception") //http://localhost:52102/Home/About?ex=exception 拋出例外
+            
+            if(ex == 1) //http://localhost:52102/Home/About?ex=exception 拋出例外
             {
-                throw new Exception(ex);
+                throw new Exception();
             }
 
             return View();
         }
 
+        [設定本控制器常用的ViewBag資料]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            //ViewBag.Message = "Your contact page.";
 
             return View();
         }
