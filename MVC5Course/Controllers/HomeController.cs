@@ -9,7 +9,7 @@ using System.Web.Security;
 
 namespace MVC5Course.Controllers
 {
-    [HandleError(View ="Error_ArgumentException", ExceptionType =typeof(ArgumentException))]
+    //[HandleError(View ="Error_ArgumentException", ExceptionType =typeof(ArgumentException))]
     [AllowAnonymous]
     public class HomeController : BaseController
     {
@@ -22,7 +22,7 @@ namespace MVC5Course.Controllers
         public ActionResult About(int ex)
         {
             
-            if(ex == 1) //http://localhost:52102/Home/About?ex=exception 拋出例外
+            if(ex == 1) // 拋出例外
             {
                 throw new Exception();
             }
@@ -30,8 +30,8 @@ namespace MVC5Course.Controllers
             return View();
         }
 
-        [僅在本機開發測試用]
-        [設定本控制器常用的ViewBag資料]
+        //[僅在本機開發測試用]
+        //[設定本控制器常用的ViewBag資料]
         public ActionResult Contact()
         {
             //ViewBag.Message = "Your contact page.";
