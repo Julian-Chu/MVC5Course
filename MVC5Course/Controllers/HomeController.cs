@@ -15,9 +15,13 @@ namespace MVC5Course.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult About(string ex = "")
         {
             ViewBag.Message = "Your application description page.";
+            if(ex == "exception") //http://localhost:52102/Home/About?ex=exception 拋出例外
+            {
+                throw new Exception(ex);
+            }
 
             return View();
         }
