@@ -18,13 +18,20 @@ namespace MVC5Course.Controllers
         //private ProductRepository repoProduct = RepositoryHelper.GetProductRepository();
         
         // GET: Products
-        public ActionResult Index(string sortBy, string keyword , int pageNo = 1)
+        public ActionResult Index(string sortBy, string keyword , int pageNo = 1, string active="")
         {
-            DoSearchOnIndex(sortBy, keyword, pageNo);
+
+
+            //ViewBag.list = new SelectList(new string[] { "True", "False" }); //靜態寫法 
+
+            var items = repoProduct.All().Select(p => p.Active.HasValue ? p.Active.Value.ToString() : "False").Distinct().ToList();
+            ViewBag.active = new SelectList(items); 
+
+            DoSearchOnIndex(sortBy, keyword, pageNo,active);
             return View();
         }
 
-        private void DoSearchOnIndex(string sortBy, string keyword, int pageNo)
+        private void DoSearchOnIndex(string sortBy, string keyword, int pageNo, string active)
         {
             var data = repoProduct.All().AsQueryable();
 
@@ -37,6 +44,9 @@ namespace MVC5Course.Controllers
             else
                 data = data.OrderByDescending(p => p.Price);
 
+            if (!string.IsNullOrEmpty(active))
+                data = data.Where(p => p.Active.ToString() == active);
+
             ViewBag.keyword = keyword;
             ViewBag.pageNo = pageNo;
 
@@ -47,7 +57,7 @@ namespace MVC5Course.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(Product[] data, string sortBy, string keyword, int pageNo = 1)
+        public ActionResult Index(Product[] data, string sortBy, string keyword, int pageNo = 1, string active="")
         {
 
             if (ModelState.IsValid)  // 模型驗證後 記得要加!
@@ -64,7 +74,9 @@ namespace MVC5Course.Controllers
                 repoProduct.UnitOfWork.Commit();
                 return RedirectToAction("Index");
             }
-            DoSearchOnIndex(sortBy, keyword, pageNo);
+            var items = repoProduct.All().Select(p => p.Active.HasValue ? p.Active.Value.ToString() : "False").Distinct().ToList();
+            ViewBag.active = new SelectList(items);
+            DoSearchOnIndex(sortBy, keyword, pageNo,active);
 
             return View();
 
@@ -149,7 +161,7 @@ namespace MVC5Course.Controllers
             //}
 
             var product = repoProduct.Find(id);
-            if (TryUpdateModel(product, new string[] { "ProductName", "Stock" }))
+            if (TryUpdateModel(product, new string[] { "ProductName", "Stock","Active" }))
             {
             }
                 repoProduct.UnitOfWork.Commit();

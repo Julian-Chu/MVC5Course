@@ -12,6 +12,7 @@
 </p>
 <p>
     <form>
+        @Html.DropDownList("active", null, "請選擇Active", new { onchange = "" })
         @*<input type="search" name="keyword" value="" />*@
         @Html.TextBox("keyword")
         <input type="submit" value="搜尋" />
