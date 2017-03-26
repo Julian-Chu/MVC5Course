@@ -120,12 +120,16 @@
             </td>*@
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id=item.ClientId }) |
-                @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |
+@*                @Html.ActionLink("Details", "Details", new { id=item.ClientId }) |*@
+                @Ajax.ActionLink("AjaxDemo", "Details", new { id = item.ClientId }, new AjaxOptions {
+                      UpdateTargetId = "Detail"}) |
+
                 @Html.ActionLink("Delete", "Delete", new { id=item.ClientId })
             </td>
         </tr>
     }
     
     </table>
+        <div id="Detail"></div>
 </body>
 </html>
