@@ -5,10 +5,19 @@
 }
 
 <h2>Edit</h2>
-<!--  兩種皆可使用 -->
-@*@Html.EditorForModel()*@ 
-@Html.EditorFor(m=>m)
 
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Product</h4>
+        <hr />
+        <!--  兩種皆可使用 -->
+        @*@Html.EditorForModel()*@
+        @Html.EditorFor(m => m)
+    </div>
+}
 
 <div>
     @Html.ActionLink("Back to List", "Index")
