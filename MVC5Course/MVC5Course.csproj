@@ -451,6 +451,7 @@
     <Content Include="Views\Clients\Index.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\顯示性別.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\CreditRating.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
